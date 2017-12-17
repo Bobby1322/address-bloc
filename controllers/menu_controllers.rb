@@ -14,6 +14,7 @@ class MenuController
         puts "3 - Search for an entry"
         puts "4 - Import entries from a CSV"
         puts "5 - Exit"
+        puts "0 - Big Red Button"
         print "Enter your selection: "
 
         selection = gets.to_i
@@ -38,6 +39,9 @@ class MenuController
             when 5
                 puts "Good-bye!"   
                 exit(0)
+            when 0 
+                system "clear"
+                big_red_button
             else
                 system "clear"
                 puts "Sorry, that is not a valid input"
@@ -178,4 +182,26 @@ class MenuController
             search_submenu(entry)
         end
     end
+
+    def big_red_button
+        puts "Are you sure you want to press it?"
+        puts "\nY - FUCK YEAH!"
+        puts "N - Ahhh, go back!"
+
+        selection2 = gets.chomp
+
+        case selection2
+        when "Y"
+            address_book.delete_all
+            system "clear"
+            main_menu
+        when "N"
+            system "clear"
+            main_menu
+        end
+    end
+
+
+
+
 end
